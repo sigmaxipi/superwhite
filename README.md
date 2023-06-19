@@ -4,7 +4,9 @@ display a very bright white color on HDR-enabled displays with ~1 KB of video fi
 
 https://github.com/dtinth/superwhite/assets/193136/311aac17-ff89-4700-a080-98dbe4424cbd
 
-if you view [this page](https://github.com/dtinth/superwhite#readme) with a recent iPhone or iPad with low-power mode turned off, you should see a very bright white color above. on a Mac displays with HDR support, you should see a white color that is brighter than `#ffffff`. on unsupported displays, you should see a normal white color.
+[superwhite.webm](https://github.com/sigmaxipi/superwhite/assets/8306740/bf5ddb23-5772-4d48-aed4-ce76c329d8ff)
+
+if you view [this page](https://github.com/dtinth/superwhite#readme) with a recent iPhone or iPad with low-power mode turned off, you should see a very bright white color above for superwhite.mp4. on a Mac displays with HDR support, you should see a white color that is brighter than `#ffffff`. on unsupported displays, you should see a normal white color. If you use a Chrome on a Windows machine with HDR support, you should see a very bright white color for superwhite.webm. Because different browsers support different formats of HDR video, some examples might not work on some devices.
 
 for example of a practical usage, see: <https://notes.dt.in.th/HDRQRCode>
 
@@ -31,7 +33,7 @@ data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAvG1kYX
 ></video>
 ```
 
-## Creating the video
+## Creating the HEVC superwhite.mp4 video
 
 I used Final Cut Pro.
 
@@ -44,3 +46,8 @@ I used Final Cut Pro.
   - Set **Mode** to **SDR to HDR (PQ).**
   - Crank up **Peak Brightness** to 5000 nits.
 - Export the video using **HEVC 10-bit** as the codec.
+
+# Creating the VP9 superwhite.webm video
+
+- Start with an input `qr.bmp`
+- Run `ffmpeg -y -i qr.bmp -c:v libvpx-vp9 -color_primaries bt2020 -color_trc smpte2084 -colorspace bt2020nc -profile:v 0 -color_range 1 -pix_fmt yuv420p10le superwhite.webm`

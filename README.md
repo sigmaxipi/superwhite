@@ -47,7 +47,7 @@ I used Final Cut Pro.
   - Crank up **Peak Brightness** to 5000 nits.
 - Export the video using **HEVC 10-bit** as the codec.
 
-# Creating the VP9 superwhite.webm video
+## Creating the VP9 superwhite.webm video
 
 - Start with an input `qr.bmp`
 - Run `ffmpeg -y -i qr.bmp -c:v libvpx-vp9 -color_primaries bt2020 -color_trc smpte2084 -colorspace bt2020nc -profile:v 0 -color_range 1 -pix_fmt yuv420p10le superwhite.webm`
